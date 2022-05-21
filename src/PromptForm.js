@@ -10,6 +10,7 @@ export default function PromptForm({addPrompt}){
     }
     return(
         <div>
+            <form onSubmit={onSubmit} >
             <h1>Fun with AI</h1>
             <h2>Enter Prompt</h2>
             <input 
@@ -27,7 +28,7 @@ export default function PromptForm({addPrompt}){
                 className="submit"
             >
             </input>
-         
+            </form>
         </div>
     )
 }

@@ -6,6 +6,11 @@ import "./App.css";
 function App() {
   const [prompts, setPrompts] = useState([])
 
+
+  const data = {
+    prompt: "asfsdfdsf"
+  }
+
   const API = 'http://localhost:3001/api'
   const headers = {
     Accepts: 'application/json',
@@ -19,15 +24,19 @@ function App() {
   }, []);
 
 
+
   function addPrompt(prompt){
-    fetch(API, {
-      method: 'POST',
-      body: JSON.stringify(prompt),
-      headers,
-    })
-    .then((res) => res.json())
-    .then((json) => setPrompts([...prompts, json]))
-  }
+    // fetch(API, {
+    //   method: 'POST',
+    //   body: JSON.stringify(prompt),
+    //   headers,
+    // })
+    // .then((res) => res.json())
+    // .then((json) => setPrompts([...prompts, json]))
+    setPrompts([...prompts, prompt])
+    }
+
+  console.log(prompts)
 
   return (
     <div className="App">
