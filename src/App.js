@@ -3,13 +3,20 @@ import PromptForm from "./PromptForm";
 import PromptContainer from "./PromptContainer"
 import "./App.css";
 
+
 function App() {
   const [prompts, setPrompts] = useState([])
 
 
   const data = {
-    prompt: "asfsdfdsf"
-  }
+    prompt: "Write a poem about a dog wearing skis",
+    temperature: 0.5,
+    max_tokens: 64,
+    top_p: 1.0,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.0,
+   };
+   
 
   const API = 'http://localhost:3001/api'
   const headers = {
@@ -33,7 +40,16 @@ function App() {
     // })
     // .then((res) => res.json())
     // .then((json) => setPrompts([...prompts, json]))
-    setPrompts([...prompts, prompt])
+
+    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+ method: "POST",
+ headers: {
+   "Content-Type": "application/json",
+   Authorization: `Bearer ${process.env.OPENAI_SECRET}`,
+ },
+ body: JSON.stringify(data),
+});
+    // setPrompts([...prompts, prompt])
     }
 
   console.log(prompts)
